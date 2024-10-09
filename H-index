@@ -1,0 +1,20 @@
+class Solution {
+    public int hIndex(int[] citations) {
+        Arrays.sort(citations);
+        int n=citations.length;
+        int i;
+        for(i=0;i<n/2;i++){
+            int temp=citations[i];
+            citations[i]=citations[n-i-1];
+            citations[n-i-1]=temp;
+        }
+        for(i=0;i<n;i++){
+            if(citations[i]>=i+1){
+                continue;
+            }else{
+                return i;
+            }
+        }
+        return n;
+    }
+}
